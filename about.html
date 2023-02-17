@@ -4,12 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito&family=Roboto+Slab&display=swap" rel="stylesheet">
   <title>About Me</title>
 </head>
 <body>
-  <h1>About Me</span></h1>
+  <div class="top-container">
+    <nav>
+      <a href="./">
+        <img class="home_icon" src="images/home.png" alt="home">
+      </a>
+      <ul class="nav_links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li> 
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experiment.html">Experiment</a></li> 
+      </ul>  
+    </nav>
+  </div>
+  <p id="greeting">Hey there!<span class="wave">👋</span><br>I'm Amberlee</p>
   <picture>
-    <img src="images/Amberlee.jpg" alt="Amberlee headshot" width="150" height="200">
+    <img src="images/Amberlee.jpg" alt="Amberlee headshot" width="230" height="300">
   </picture>
+  <section class="bio"> 
+    <!-- Line 39: Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections, or else use a div element instead for any cases where no heading is needed -->
+    <p>I'm a 4th year Mathematics-Computer Science major at UC San Diego. I am passionate <br>
+      about development and I am always looking for ways to explore the intersection between <br>
+      technology and design. I am currently looking for full-time opportunities in software <br>
+      engineering, frontend development, and backend development. When I am not coding, I <br>
+      spend most of my time skateboarding, bouldering, and dogspotting (especially corgis)! <br>
+      Thanks for stopping by!</p>       
+  </section>
+  <div class="contact_me">
+    <p>Let's Connect 💌</p>
+    <ul class="contact_socials" style="clear: both;">
+      <li><a class="btn" href="mailto:amberleehuynh5@gmail.com">Email</a></li>
+      <li><a class="footer-link" href="https://www.linkedin.com/in/amberlee-huynh/">LinkedIn</a></li>
+      <li><a class="footer-link" href="https://www.instagram.com/amberlee.huynh/?hl=en">Instagram</a></li>
+    </ul>
+  </div>
 </body>
 </html>
