@@ -98,7 +98,7 @@ editPostButton.addEventListener('click', (event) => {
   document.getElementById('edit-summary').value = '';
 });
 
-// Function to handle the "Delete Post" button click event
+// Function to handle "Delete Post" button when user clicks it
 const deleteButton = document.querySelector('#delete-blog-post button[value="ok"]');
 deleteButton.addEventListener('click', (event) => {
   // Prevent form submission
