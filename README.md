@@ -4,7 +4,7 @@ Amberlee Huynh | PID: A17166059
 
 Netlify:
 
-Native Dialogs
-Custom Dialogs
-CRUD
-Styled CRUD
+Native Dialogs<br>
+Custom Dialogs<br>
+CRUD<br>
+Styled CRUD<br>
