@@ -91,6 +91,14 @@
       letter-spacing: 1px;
       padding: 24px 20px 24px 20px;
     }
+    .edit-button {
+      width: 40px;
+      height: 30px;
+    }
+    .delete-button {
+      width: 40px;
+      height: 30px;
+    }
   </style>
 </head>
 
@@ -125,9 +133,9 @@
     <input type="date" id="post-date"><br><br>
     <label for="post-summary">Post summary: </label>
     <textarea type="text" id="post-summary"></textarea>
-    <form method="dialog"> <!-- havent changed -->
-      <button id="ok-button" value="ok">Ok</button> <!-- havent changed -->
-      <button id="cancel-button" value="cancel">Cancel</button> <!-- havent changed -->
+    <form method="dialog"> 
+      <button id="ok-button" value="ok">Ok</button>
+      <button id="cancel-button" value="cancel">Cancel</button> 
     </form>
   </dialog>
 
@@ -138,17 +146,17 @@
     <input type="date" id="edit-date"><br><br>
     <label for="edit-summary">Post summary: </label>
     <input id="edit-summary" type="text">
-    <form method="dialog"> <!-- havent changed -->
-      <button id="ok-button" value="ok">Ok</button> <!-- havent changed -->
-      <button id="cancel-button" value="cancel">Cancel</button> <!-- havent changed -->
+    <form method="dialog"> 
+      <button id="ok-button" value="ok">Ok</button> 
+      <button id="cancel-button" value="cancel">Cancel</button> 
     </form>
   </dialog>
 
   <dialog id="delete-blog-post">
     <p>Do you want to delete the blog post?</p>
-    <form method="dialog"> <!-- havent changed -->
-      <button id="ok-button" value="ok">Ok</button> <!-- havent changed -->
-      <button id="cancel-button" value="cancel">Cancel</button> <!-- havent changed -->
+    <form method="dialog">  
+      <button id="ok-button" value="ok">Ok</button>  
+      <button id="cancel-button" value="cancel">Cancel</button>  
     </form>
   </dialog>
 </body>

@@ -18,8 +18,8 @@ function displayPosts() {
         <div class="post-date">${post.date}</div>
         <div class="post-summary">${post.summary}</div>
         <div class="post-buttons">
-          <button class="edit-button" onclick="editPost(${post.id}, '${post.summary}', '${post.title}', '${post.date}')">Edit</button>
-          <button class="delete-button" onclick="deletePost(${post.id})">Delete</button>
+          <button class="edit-button" onclick="editPost(${post.id}, '${post.summary}', '${post.title}', '${post.date}')">✏️</button>
+          <button class="delete-button" onclick="deletePost(${post.id})">🗑️</button>
         </div>
       `;
       postList.appendChild(li);

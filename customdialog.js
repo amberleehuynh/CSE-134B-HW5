@@ -34,15 +34,18 @@ function customPrompt() {
   outputDialog.innerHTML = '';
   promptDialog.showModal();
 
-    // If user clicked Ok
-    okButton.addEventListener('click', () => {
-      outputDialog.textContent = `Confirm result: ${okButton.value}`;
-    });
+  const okButton = document.getElementById('ok-button');
+  const cancelButton = document.getElementById('cancel-button');
+
+  // If user clicked Ok
+  okButton.addEventListener('click', () => {
+  outputDialog.textContent = `Result: ${okButton.value}`;
+  });
   
-    // If user clicked Cancel
-    cancelButton.addEventListener('click', () => {
-      outputDialog.textContent = `Confirm result: ${cancelButton.value}`;
-    });
+  // If user clicked Cancel
+  cancelButton.addEventListener('click', () => {
+  outputDialog.textContent = `Result: ${cancelButton.value}`;
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
