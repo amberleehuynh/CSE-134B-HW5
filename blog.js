@@ -1,8 +1,8 @@
 // Define a global variable to store the blog posts
 let posts = [];
 
-// Function to display all the blog posts in the HTML list
-function displayPosts() {
+// Function to show all the blog posts in the HTML list
+function showPosts() {
   const postList = document.getElementById('post-list');
   postList.innerHTML = ''; // clear the list before re-adding all posts
   if (posts.length === 0) {
@@ -32,7 +32,7 @@ function addPost(title, date, summary) {
   const id = Date.now(); // generate a unique id based on the current timestamp
   const post = { id, title, date, summary };
   posts.push(post);
-  displayPosts();
+  showPosts();
 }
 
 // Delete a blog post
@@ -40,7 +40,7 @@ function deletePost(id) {
   const index = posts.findIndex(post => post.id === id);
   if (index >= 0) {
     posts.splice(index, 1);
-    displayPosts();
+    showPosts();
   }
 }
 
@@ -51,7 +51,7 @@ function editPost(id, title, date, summary) {
     posts[index].title = title;
     posts[index].date = date;
     posts[index].summary = summary;
-    displayPosts();
+    showPosts();
   }
 }
 
