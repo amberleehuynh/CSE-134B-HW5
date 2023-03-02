@@ -2,9 +2,9 @@
 
 Amberlee Huynh | PID: A17166059 
 
-Netlify:
+Netlify: https://amberleehuynh-hw4.netlify.app/
 
-Native Dialogs<br>
-Custom Dialogs<br>
-CRUD<br>
-Styled CRUD<br>
+[Native Dialogs](https://amberleehuynh-hw4.netlify.app/nativedialogs.html)<br>
+[Custom Dialogs](https://amberleehuynh-hw4.netlify.app/customdialog.html)<br>
+[CRUD](https://amberleehuynh-hw4.netlify.app/crud.html)<br>
+[Styled CRUD](https://amberleehuynh-hw4.netlify.app/styledcrud.html)<br>
