@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Native Dialogs</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.0/purify.min.js" integrity="sha512-Ijc86Y/rPOFCr+CJLd0QQlEaCC9ztVJFvPzK0DMrHCJ8biDkyQoo6Ll/OmqMEOaDJ2nCgsV89402SzXnocKzZg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script type="text/javascript" src="customdialog.js"></script>
+  <script type="text/javascript" src="node_modules/dompurify/dist/purify.js"></script>
+  <!-- <script type="text/javascript" src="customdialog.js"></script> -->
 </head>
 <body>
   <div class="top-container">
@@ -29,12 +30,12 @@
   <button type="button" id="confirm-button">Confirm</button>
   <button type="button" id="prompt-button">Prompt</button>
   <button type="button" id="safer-prompt-button">Safer Prompt</button>
-  <output id="outputDialog"></output>
+  <output id="output-dialog"></output>
 
   <script>
     document.getElementById("alert-button").addEventListener("click", displayAlert);
     function displayAlert() {
-      alert("Alert");
+      alert("Alert pressed!");
     }
   </script>
 
@@ -42,7 +43,12 @@
     document.getElementById("confirm-button").addEventListener("click", displayConfirm);
     function displayConfirm() {
       let confirmValue = confirm("Do you confirm this?");
-      document.getElementById("output-dialog").textContent = `Value returned by the confirm method: ${confirmValue}`;
+      if (confirmValue == true) {
+        document.getElementById("output-dialog").textContent = "Confirm Result: True";
+      }
+      else {
+        document.getElementById("output-dialog").textContent = "Confirm Result: False";
+      }
     }
   </script>
 
@@ -67,14 +73,14 @@
     function displaySaferPrompt() {
       let saferPromptInput = prompt("Enter text:");
       if (saferPromptInput == "") {
-        document.getElementById("output-dialog").textContent = "No input from user";
+        document.getElementById("output-dialog").innerHTML = "No input from user";
       }
       else if (saferPromptInput == null) {
-        document.getElementById("output-dialog").textContent = "No input from user";
+        document.getElementById("output-dialog").innerHTML = "No input from user";
       }
       else {
         let sanitizeInput = DOMPurify.sanitize(saferPromptInput);
-        document.getElementById("output-dialog").innerHTML = `Text: ${sanitizeInput}`;
+        document.getElementById("output-dialog").innerHTML = "Text: " + sanitizeInput;
       }
     }
   </script>

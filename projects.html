@@ -23,6 +23,13 @@
         <li><a href="nativedialogs.html">Native Dialogs</a></li>
         <li><a href="customdialog.html">Custom Dialog</a></li>
         <li><a href="crud.html">CRUD</a></li>
+        <li><a href="styledcrud.html">Styled CRUD</a></li>
+        <li>
+          <div class="toggle">
+            <input type="checkbox" id="toggle">
+            <label for="toggle"></label>
+          </div>
+        </li>
       </ul>  
     </nav>
   </div>
@@ -100,5 +107,20 @@
       </ul>
     </div>
   </div>
+
+  <script>
+    const toggle = document.getElementById('toggle');
+    const body = document.body;
+
+    toggle.addEventListener('input', (e) => {
+      const isChecked = e.target.checked;
+      
+      if(isChecked) {
+        body.classList.add('dark-theme');
+      } else {
+        body.classList.remove('dark-theme');
+      }
+    });
+  </script>
 </body>
 </html>
