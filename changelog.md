@@ -9,8 +9,7 @@ to dark mode. I decreased the brightness and changed the font colors so that it 
 
 1. I modified my portfolio to use Google Analytics by using the <script> tag in my index.html page. The reason I chose to input Google Analytics is because it helps me 
   understand website traffic, where users are coming from, which pages they visited, how long they stayed on the site, etc. This is benefical for my website because 
-  I can use it to improve my website performance and increase user engagement to see which links are not clicked on as often as others. A feature that Google Analytics
-  has is making sense of the data and converting it into more comprehensive/ appealing charts and graphs.
+  I can use it to improve my website performance and increase user engagement to see which links are not clicked on as often as others. A neat feature that Google Analytics has is making sense of the data and converting it into more comprehensive/ appealing charts and graphs.
 
   <b>Code snippet:</b>
   ```
