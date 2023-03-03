@@ -5,10 +5,10 @@ let posts = [];
 function showPostsList() {
   const postList = document.getElementById('post-list');
   postList.innerHTML = ''; 
-  const emptyListNotice = document.getElementById('emptyListNotice');
+  const emptyList = document.getElementById('empty-list');
 
   if (posts.length === 0) {
-    emptyListNotice.innerHTML = 'There are no posts';
+    emptyList.innerHTML = 'There are no posts';
     return;
   } 
   else {
