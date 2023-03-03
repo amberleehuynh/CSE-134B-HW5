@@ -44,11 +44,13 @@
     document.getElementById("confirm-button").addEventListener("click", displayConfirm);
     function displayConfirm() {
       let confirmValue = confirm("Do you confirm this?");
+      // User clicks ok button
       if (confirmValue == true) {
-        document.getElementById("output-dialog").textContent = "Confirm Result: True";
+        document.getElementById("output-dialog").textContent = `Confirm result: ${confirmValue}`;
       }
+      // User clicks cancel button
       else {
-        document.getElementById("output-dialog").textContent = "Confirm Result: False";
+        document.getElementById("output-dialog").textContent = `Confirm result: ${confirmValue}`;
       }
     }
   </script>
@@ -57,12 +59,16 @@
     document.getElementById("prompt-button").addEventListener("click", displayPrompt);
     function displayPrompt() {
       let promptInput = prompt("Enter text:");
+
+      // User enters nothing and clicks cancel
       if (promptInput == "") {
         document.getElementById("output-dialog").textContent = "No input from user";
       }
+      // Prompt is null and user clicks cancel
       else if (promptInput == null) {
         document.getElementById("output-dialog").textContent = "No input from user";
       }
+      // Prompt is filled and user clicks ok
       else {
         document.getElementById("output-dialog").innerHTML = `Text: ${promptInput}`;
       }
@@ -73,12 +79,16 @@
     document.getElementById("safer-prompt-button").addEventListener("click", displaySaferPrompt);
     function displaySaferPrompt() {
       let saferPromptInput = prompt("Enter text:");
+
+      // User enters nothing and clicks cancel
       if (saferPromptInput == "") {
         document.getElementById("output-dialog").innerHTML = "No input from user";
       }
+      // Prompt is null and user clicks cancel
       else if (saferPromptInput == null) {
         document.getElementById("output-dialog").innerHTML = "No input from user";
       }
+      // Prompt is filled and user clicks ok
       else {
         let sanitizeInput = DOMPurify.sanitize(saferPromptInput);
         document.getElementById("output-dialog").innerHTML = "Text: " + sanitizeInput;
