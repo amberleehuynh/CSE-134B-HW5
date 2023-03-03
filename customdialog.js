@@ -1,4 +1,3 @@
-//outputTag variable is a reference to the HTML <output> tag where we output our values for confirm/prompt.
 let outputDialog;
 
 // Alert button
