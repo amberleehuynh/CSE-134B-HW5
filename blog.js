@@ -1,13 +1,15 @@
-// Define a global variable to store the blog posts
+// Store the blog posts
 let posts = [];
 
-// Function to show all the blog posts in the HTML list
-function showPosts() {
+// Show all the blog posts in the HTML list
+function showPostsList() {
   const postList = document.getElementById('post-list');
-  postList.innerHTML = ''; // clear the list before re-adding all posts
+  postList.innerHTML = ''; 
+  const emptyListNotice = document.getElementById('emptyListNotice');
+
   if (posts.length === 0) {
-    const emptyListNotice = document.getElementById('emptyListNotice');
-    emptyListNotice.innerHTML = 'No posts available.';
+    emptyListNotice.innerHTML = 'There are no posts';
+    return;
   } 
   else {
     for (let i = 0; i < posts.length; i++) {
@@ -29,10 +31,10 @@ function showPosts() {
 
 // Add a blog post
 function addPost(title, date, summary) {
-  const id = Date.now(); // generate a unique id based on the current timestamp
+  const id = Date.now(); 
   const post = { id, title, date, summary };
   posts.push(post);
-  showPosts();
+  showPostsList();
 }
 
 // Delete a blog post
@@ -40,7 +42,7 @@ function deletePost(id) {
   const index = posts.findIndex(post => post.id === id);
   if (index >= 0) {
     posts.splice(index, 1);
-    showPosts();
+    showPostsList();
   }
 }
 
@@ -51,17 +53,17 @@ function editPost(id, title, date, summary) {
     posts[index].title = title;
     posts[index].date = date;
     posts[index].summary = summary;
-    showPosts();
+    showPostsList();
   }
 }
 
-// Function to handle "Add Post" button when user clicks it
+// Handle Add Post button when user clicks on it
 const addPostButton = document.getElementById('add-post-button');
 addPostButton.addEventListener('click', () => {
   document.getElementById('create-blog-post').showModal();
 });
 
-// Function to handle "Create Post" button when user clicks it
+// Handle Create Post button when user clicks on it
 const createPostButton = document.querySelector('#create-blog-post button[value="ok"]');
 createPostButton.addEventListener('click', (event) => {
   // Prevent form submission
@@ -79,7 +81,7 @@ createPostButton.addEventListener('click', (event) => {
   document.getElementById('post-summary').value = '';
 });
 
-// Function to handle "Edit Post" button when user clicks it
+// Handle Edit Post button when user clicks on it
 const editPostButton = document.querySelector('#edit-blog-post button[value="ok"]');
 editPostButton.addEventListener('click', (event) => {
   // Prevent form submission
@@ -98,7 +100,7 @@ editPostButton.addEventListener('click', (event) => {
   document.getElementById('edit-summary').value = '';
 });
 
-// Function to handle "Delete Post" button when user clicks it
+// Handle Delete Post button when user clicks on it
 const deleteButton = document.querySelector('#delete-blog-post button[value="ok"]');
 deleteButton.addEventListener('click', (event) => {
   // Prevent form submission
