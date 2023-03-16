@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito&family=Roboto+Slab&display=swap" rel="stylesheet">
+	<title>HTTP Requests</title>
+
+  <style>
+    form {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 40px;
+    }
+
+    button {
+      width: 70px;
+      height: 30px;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-container">
+    <nav>
+      <a href="./">
+        <img class="home_icon" src="images/home.png" alt="home">
+      </a>
+      <ul class="nav_links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li> 
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="methodtest.html">Method Test</a></li>
+        <li><a href="webcomponent.html">Web Component</a></li>
+        <li>
+          <div class="toggle">
+            <input type="checkbox" id="toggle">
+            <label for="toggle"></label>
+          </div>
+        </li>
+      </ul>  
+    </nav>
+  </div>
+
+  <form id="articleForm">
+		<label for="id">ID:</label><br>
+		<input type="number" id="id" name="id"><br><br>
+		<label for="article_name">Article Name:</label><br>
+		<input type="text" id="article_name" name="article_name"><br><br>
+		<label for="article_body">Article Body:</label><br>
+		<textarea id="article_body" name="article_body"></textarea><br><br>
+    <label for="date">Date:</label><br>
+		<input type="text" id="date" name="date" disabled><br><br>
+
+		<button type="button" id="postBtn">POST</button>
+		<button type="button" id="getBtn">GET</button>
+		<button type="button" id="putBtn">PUT</button>
+		<button type="button" id="deleteBtn">DELETE</button>
+	</form>
+
+	<output id="responseList"></output>
+
+	<script>
+		const articleForm = document.getElementById('articleForm');
+		const postBtn = document.getElementById('postBtn');
+		const getBtn = document.getElementById('getBtn');
+		const putBtn = document.getElementById('putBtn');
+		const deleteBtn = document.getElementById('deleteBtn');
+		const responseList = document.getElementById('responseList');
+
+    // Set date field to current date and time
+		var dateField = document.getElementById("date");
+		dateField.value = new Date().toLocaleString();
+
+		postBtn.addEventListener('click', () => {
+			const formData = new FormData(articleForm);
+			fetch('https://httpbin.org/post', {
+				method: 'POST',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				responseList.innerHTML = '';
+				Object.entries(data).forEach(([key, value]) => {
+					const li = document.createElement('li');
+					li.textContent = `${key}: ${JSON.stringify(value)}`;
+					responseList.appendChild(li);
+          responseList.appendChild(document.createElement('br'));
+				});
+			})
+			.catch(error => console.error(error));
+		});
+
+		getBtn.addEventListener('click', () => {
+			fetch('https://httpbin.org/get?id=123')
+			.then(response => response.json())
+			.then(data => {
+				responseList.innerHTML = '';
+				Object.entries(data).forEach(([key, value]) => {
+					const li = document.createElement('li');
+					li.textContent = `${key}: ${JSON.stringify(value)}`;
+					responseList.appendChild(li);
+          responseList.appendChild(document.createElement('br'));
+				});
+			})
+			.catch(error => console.error(error));
+		});
+
+		putBtn.addEventListener('click', () => {
+			const formData = new FormData(articleForm);
+			fetch('https://httpbin.org/put', {
+				method: 'PUT',
+				body: formData
+			})
+			.then(response => response.json())
+			.then(data => {
+				responseList.innerHTML = '';
+				Object.entries(data).forEach(([key, value]) => {
+					const li = document.createElement('li');
+					li.textContent = `${key}: ${JSON.stringify(value)}`;
+					responseList.appendChild(li);
+          responseList.appendChild(document.createElement('br'));
+				});
+			})
+			.catch(error => console.error(error));
+		});
+
+		deleteBtn.addEventListener('click', () => {
+			fetch('https://httpbin.org/delete?id=123', {
+				method: 'DELETE'
+			})
+			.then(response => response.json())
+			.then(data => {
+				responseList.innerHTML = '';
+				Object.entries(data).forEach(([key, value]) => {
+					const li = document.createElement('li');
+					li.textContent = `${key}: ${JSON.stringify(value)}`;
+					responseList.appendChild(li);
+          responseList.appendChild(document.createElement('br'));
+				});
+			})
+			.catch(error => console.error(error));
+		});
+  </script>
+
+  <!-- Toggle for dark mode -->
+  <script>
+    const toggle = document.getElementById('toggle');
+    const body = document.body;
+
+    toggle.addEventListener('input', (e) => {
+      const isChecked = e.target.checked;
+      
+      if(isChecked) {
+        body.classList.add('dark-theme');
+      } else {
+        body.classList.remove('dark-theme');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito&family=Roboto+Slab&display=swap" rel="stylesheet">
-	<title>HTTP Requests</title>
-
-  <style>
-    form {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 40px;
-    }
-
-    button {
-      width: 70px;
-      height: 30px;
-      margin: 2px;
-    }
-  </style>
+  <title>Button Count</title>
+  <script type="module" src="ButtonCount.js"></script>
 </head>
 <body>
   <div class="top-container">
@@ -45,27 +32,10 @@
       </ul>  
     </nav>
   </div>
-
-  <form id="articleForm">
-    <label for="id">ID:</label><br>
-    <input type="number" id="id" name="id"><br><br>
-    <label for="article_name">Article Name:</label><br>
-    <input type="text" id="article_name" name="article_name"><br><br>
-    <label for="article_body">Article Body:</label><br>
-    <textarea id="article_body" name="article_body"></textarea><br><br>
-    <label for="date">Date:</label><br>
-    <input type="text" id="date" name="date" disabled><br><br>
-    
-    <button type="button" id="postBtn">POST</button>
-    <button type="button" id="getBtn">GET</button>
-    <button type="button" id="putBtn">PUT</button>
-    <button type="button" id="deleteBtn">DELETE</button>
-  </form>
   
-  <output id="response"></output>
-  <script src="methodtest.js"></script>
+  <!-- Autonomous custom element (extend HTMLElement) -->
+  <button-count></button-count>
 
-  <!-- Toggle for dark mode -->
   <script>
     const toggle = document.getElementById('toggle');
     const body = document.body;
@@ -73,10 +43,9 @@
     toggle.addEventListener('input', (e) => {
       const isChecked = e.target.checked;
       
-      if (isChecked) {
+      if(isChecked) {
         body.classList.add('dark-theme');
-      } 
-      else {
+      } else {
         body.classList.remove('dark-theme');
       }
     });

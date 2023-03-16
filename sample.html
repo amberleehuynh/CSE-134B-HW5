@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nunito&family=Roboto+Slab&display=swap" rel="stylesheet">
+	<title>HTTP Requests</title>
+
+  <style>
+    form {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 40px;
+    }
+
+    button {
+      width: 70px;
+      height: 30px;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-container">
+    <nav>
+      <a href="./">
+        <img class="home_icon" src="images/home.png" alt="home">
+      </a>
+      <ul class="nav_links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li> 
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="methodtest.html">Method Test</a></li>
+        <li><a href="webcomponent.html">Web Component</a></li>
+        <li>
+          <div class="toggle">
+            <input type="checkbox" id="toggle">
+            <label for="toggle"></label>
+          </div>
+        </li>
+      </ul>  
+    </nav>
+  </div>
+
+	<form id="articleForm">
+		<label for="id">ID:</label><br>
+		<input type="number" id="id" name="id"><br><br>
+		<label for="article_name">Article Name:</label><br>
+		<input type="text" id="article_name" name="article_name"><br><br>
+		<label for="article_body">Article Body:</label><br>
+		<textarea id="article_body" name="article_body"></textarea><br><br>
+		<label for="date">Date:</label><br>
+		<input type="text" id="date" name="date" disabled><br><br>
+
+		<button id="postBtn">POST</button>
+		<button id="getBtn">GET</button>
+		<button id="putBtn">PUT</button>
+		<button id="deleteBtn">DELETE</button>
+	</form>
+
+	<output id="response"></output>
+
+	<script>
+		// Get references to the form and buttons
+		var form = document.getElementById("articleForm");
+		var postBtn = document.getElementById("postBtn");
+		var getBtn = document.getElementById("getBtn");
+		var putBtn = document.getElementById("putBtn");
+		var deleteBtn = document.getElementById("deleteBtn");
+		var response = document.getElementById("response");
+
+    // Set date field to current date and time
+		var dateField = document.getElementById("date");
+		dateField.value = new Date().toLocaleString();
+
+		// Fetch: Event listener for POST button
+		postBtn.addEventListener("click", function(event) {
+			event.preventDefault();
+
+			// Get form data
+			let formData = new FormData(form);
+			let id = formData.get("id");
+			let articleName = formData.get("article_name");
+			let articleBody = formData.get("article_body");
+
+			// Display form data
+			response.innerHTML = 
+        "<span style='color:#777'>" +
+        "<br>" +
+        "<pre>          Fetch: POST</pre>" +
+        "<pre>          ID: " + id + "</pre>" +
+				"<pre>          Article Name: " + articleName + "</pre>" +
+				"<pre>          Article Body: " + articleBody + "</pre>" + "</span>";
+
+			// Send HTTP request
+			const post_response = fetch("https://httpbin.org/post", {
+				method: "POST",
+				body: formData
+			})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+		});
+
+		// Fetch: Event listener for GET button
+		getBtn.addEventListener("click", function(event) {
+			event.preventDefault();
+
+      // Get form data
+      const url = "https://httpbin.org/get";
+      let formData = new FormData(form);
+      const queryString = new URLSearchParams(formData).toString();
+      const urlWithQueryString = url + "?" + queryString;
+
+      // Display form data
+      response.innerHTML = 
+        "<span style='color:#777'>" +
+        "<br>" +
+        "<pre>          Fetch: GET</pre>" +
+        "<pre>          URL: " + urlWithQueryString + "</pre>" + "</span>";
+
+      // Send HTTP request
+			fetch("https://httpbin.org/get")
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+		});
+
+		// Fetch: Event listener for PUT button
+		putBtn.addEventListener("click", function(event) {
+			event.preventDefault();
+			
+      // Get form data
+			let formData = new FormData(form);
+			let id = formData.get("id");
+			let articleName = formData.get("article_name");
+			let articleBody = formData.get("article_body");
+
+			// Display form data
+			response.innerHTML = 
+        "<span style='color:#777'>" +
+        "<br>" +
+        "<pre>          Fetch: PUT</pre>" +
+        "<pre>          ID: " + id + "</pre>" +
+				"<pre>          Article Name: " + articleName + "</pre>" +
+				"<pre>          Article Body: " + articleBody + "</pre>" + "</span>";
+
+      // Send HTTP request
+			fetch("https://httpbin.org/put", {
+				method: "PUT",
+				body: formData
+			})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+		});
+
+    // Fetch: Event listener for DELETE button
+		deleteBtn.addEventListener("click", function(event) {
+			event.preventDefault();
+
+      // Get form data
+      const url = "https://httpbin.org/get";
+      let formData = new FormData(form);
+      const queryString = new URLSearchParams(formData).toString();
+      const urlWithQueryString = url + "?" + queryString;
+
+      // Display form data
+      response.innerHTML = 
+        "<span style='color:#777'>" +
+        "<br>" +
+        "<pre>          Fetch: DELETE</pre>" +
+        "<pre>          URL: " + urlWithQueryString + "</pre>" + "</span>";
+
+      // Send HTTP request
+			fetch("https://httpbin.org/delete", {
+				method: "DELETE"
+			})
+			.then(function(response) {
+				return response.json();
+			})
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+		});
+	</script>
+
+  <script>
+    const toggle = document.getElementById('toggle');
+    const body = document.body;
+
+    toggle.addEventListener('input', (e) => {
+      const isChecked = e.target.checked;
+      
+      if(isChecked) {
+        body.classList.add('dark-theme');
+      } else {
+        body.classList.remove('dark-theme');
+      }
+    });
+  </script>
+</body>
+</html>
