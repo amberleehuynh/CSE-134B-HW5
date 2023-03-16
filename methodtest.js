@@ -113,21 +113,3 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
       response.appendChild(createNestedList(data));
     });
 });
-
-// XMLHttpRequest: Add event listener for POST button
-// document.getElementById("postBtn").addEventListener("click", function() {
-//   const xhr = new XMLHttpRequest();
-//   xhr.open("POST", "https://httpbin.org/post");
-//   xhr.setRequestHeader("Content-Type", "application/json");
-//   xhr.onload = () => {
-// 		const response = JSON.parse(xhr.responseText);
-// 		responseDiv.innerHTML = `
-// 			<h2>Response</h2>
-// 			<p>${JSON.stringify(response, null, 2)}</p>
-// 			`;
-// 		};
-// 		const formData = new FormData(form);
-// 		const json = {};
-// 		formData.forEach((value, key) => json[key] = value);
-// 		xhr.send(JSON.stringify(json));
-// });
